@@ -14,26 +14,36 @@ To differentiate between multiple warehouse targets within the profiles.yaml fil
   field_description_path: warehouse_docs
   field_description_file_name: field_descriptions.md
 
-  explores:
-
-    parent_table: 
-      - actors_dim
-    dimensions: 
-      - events_fct
-    facts:
-      - narratives_fct
-
   test_schemas:
-
-    - example_dev_staging
-    - example_dev_integration
-    - example_analytics_dev
+      - lewis_analytics_dev_staging
+      - lewis_analytics_dev_integration
+      - lewis_analytics_dev
 
   dbml_schemas:
+      - lewis_analytics_dev_staging
+      - lewis_analytics_dev_integration
+      - lewis_analytics_dev
+  
+  dbml_filenames:
+      - test_10
+      - test_11
+      - test_12
 
-    - example_dev_staging
-    - example_dev_integration
-    - example_analytics_dev
+  explores:
+    parent_table: 
+      - example_parent
+    dimensions: 
+      - example_dim
+    facts:
+      - example_fact
+
+  lookml_base_filename: example__1
+  lookml_explore_filename: example__2
+  lookml_measures_filename: example__3
+  cube_base_filename: example__4
+  cube_integration_filename: example__5
+  cube_measures_filename: example__6
+  dbt_tests_filename: example__8
 
 Create this file in the root of your git repo (unless you are specifying the path through the --project-dir argument)
 

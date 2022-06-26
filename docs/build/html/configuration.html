@@ -45,26 +45,36 @@
 <span class="n">field_description_path</span><span class="p">:</span> <span class="n">warehouse_docs</span>
 <span class="n">field_description_file_name</span><span class="p">:</span> <span class="n">field_descriptions</span><span class="o">.</span><span class="n">md</span>
 
-<span class="n">explores</span><span class="p">:</span>
-
-  <span class="n">parent_table</span><span class="p">:</span>
-    <span class="o">-</span> <span class="n">actors_dim</span>
-  <span class="n">dimensions</span><span class="p">:</span>
-    <span class="o">-</span> <span class="n">events_fct</span>
-  <span class="n">facts</span><span class="p">:</span>
-    <span class="o">-</span> <span class="n">narratives_fct</span>
-
 <span class="n">test_schemas</span><span class="p">:</span>
-
-  <span class="o">-</span> <span class="n">example_dev_staging</span>
-  <span class="o">-</span> <span class="n">example_dev_integration</span>
-  <span class="o">-</span> <span class="n">example_analytics_dev</span>
+    <span class="o">-</span> <span class="n">lewis_analytics_dev_staging</span>
+    <span class="o">-</span> <span class="n">lewis_analytics_dev_integration</span>
+    <span class="o">-</span> <span class="n">lewis_analytics_dev</span>
 
 <span class="n">dbml_schemas</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">lewis_analytics_dev_staging</span>
+    <span class="o">-</span> <span class="n">lewis_analytics_dev_integration</span>
+    <span class="o">-</span> <span class="n">lewis_analytics_dev</span>
 
-  <span class="o">-</span> <span class="n">example_dev_staging</span>
-  <span class="o">-</span> <span class="n">example_dev_integration</span>
-  <span class="o">-</span> <span class="n">example_analytics_dev</span>
+<span class="n">dbml_filenames</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">test_10</span>
+    <span class="o">-</span> <span class="n">test_11</span>
+    <span class="o">-</span> <span class="n">test_12</span>
+
+<span class="n">explores</span><span class="p">:</span>
+  <span class="n">parent_table</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">example_parent</span>
+  <span class="n">dimensions</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">example_dim</span>
+  <span class="n">facts</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">example_fact</span>
+
+<span class="n">lookml_base_filename</span><span class="p">:</span> <span class="n">example__1</span>
+<span class="n">lookml_explore_filename</span><span class="p">:</span> <span class="n">example__2</span>
+<span class="n">lookml_measures_filename</span><span class="p">:</span> <span class="n">example__3</span>
+<span class="n">cube_base_filename</span><span class="p">:</span> <span class="n">example__4</span>
+<span class="n">cube_integration_filename</span><span class="p">:</span> <span class="n">example__5</span>
+<span class="n">cube_measures_filename</span><span class="p">:</span> <span class="n">example__6</span>
+<span class="n">dbt_tests_filename</span><span class="p">:</span> <span class="n">example__8</span>
 </pre></div>
 </div>
 <p>Create this file in the root of your git repo (unless you are specifying the path through the –project-dir argument)</p>

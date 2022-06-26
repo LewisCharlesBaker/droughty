@@ -44,21 +44,28 @@
 <li class="toctree-l1"><a class="reference internal" href="commands.html">Commands</a></li>
 </ul>
 </div>
-<p><strong>What’s with the name?</strong></p>
-<p># droughty
-#### adjective, drought·i·er, drought·i·est.
-#### dry.</p>
-<p>It helps keep your workflow <em>ah hem</em> dry</p>
+<p>#### droughty.
+## adjective, drought·i·er, drought·i·est.
+## dry.</p>
+<p>Droughty helps keep your workflow <em>ah hem</em> dry</p>
 <hr class="docutils" />
 <p><strong>What is droughty?</strong></p>
-<p>droughty is an analytics engineering toolkit, helping keep your workflow dry. Current tools are:</p>
+<p>droughty is an analytics engineering toolkit. It takes warehouse metadata and outputs semantic files.</p>
+<p>Current tools and supported platforms are:</p>
 <ul class="simple">
-<li><p>lookml - generates a base layer.lkml file with views and explores from a warehouse schema</p></li>
-<li><p>dbt-tests - generates a base schema from specified warehouse schemas. Includes standard testing routines</p></li>
+<li><p>lookml - generates a lkml with views, explores and measures from a warehouse schema</p></li>
+<li><p>dbt - generates a base schema from specified warehouse schemas. Includes standard testing routines</p></li>
 <li><p>dbml - generates an ERD based on the warehouse layer of your warehouse. Includes pk, fk relationships</p></li>
+<li><p>cube - generates a cube schema including dimensions, integrations and meassures</p></li>
 </ul>
-<p>Please read the usage section for details on how to use these tools</p>
 <p>The purpose of this project is to automate the repetitive, dull elements of analytics engineering in the modern data stack. It turns out this also leads to cleaner projects, less human error and increases the likelihood of the basics getting done…</p>
+<p><strong>Documentation</strong></p>
+<p>Installation, configuration and usage documentation can be found on <a class="reference external" href="https://droughty.readthedocs.io/en/latest/">ReadTheDocs</a></p>
+<p><strong>Installation</strong></p>
+<p>droughty is available through <a class="reference external" href="https://pypi.org/project/droughty">pip</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">droughty</span>
+</pre></div>
+</div>
 <hr class="docutils" />
 <p><strong>Dependencies</strong></p>
 <p>droughty uses a number of open-source projects to work properly:</p>
@@ -76,8 +83,6 @@
 <p><strong>Considerations</strong></p>
 <p>You need to run Droughty from a git repo. It uses the Git package to control certain relative dirs
 Currently the cli sub-commands have an issue where all they are not mutually exclusive. This needs to be resolved but doesn’t impact usage dramatically.</p>
-<p>## License</p>
-<p>MIT</p>
 </section>
 
 
