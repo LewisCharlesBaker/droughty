@@ -20,9 +20,46 @@ if ProjectVariables.warehouse == 'big_query':
     
     warehouse_schema =   '''
     with source as (
-        select * from `{{project_id}}.{{schema_id}}.INFORMATION_SCHEMA.COLUMN_FIELD_PATHS`
+        select 
+        
+        *,
+        case when lower (data_type) like ("%%json%%") or lower (data_type) like ("%struct%%") or lower (data_type) like ("%%array%%")
+        then min(data_type) over  (partition by table_name) end as is_nested,
+
+        
+         from `{{project_id}}.{{schema_id}}.INFORMATION_SCHEMA.COLUMN_FIELD_PATHS`
+        ),
+
+        table_has_nested_paths as (
+
+        select 
+        
+        *,
+        first_value (is_nested ignore nulls) 
+        over(partition by table_name order by table_name 
+        rows between unbounded preceding and unbounded following
+        ) as create_table_has_nested_paths,
+
+        from source
+
         )
-        select * from source
+
+        select 
+
+        *,
+        case when create_table_has_nested_paths is not null
+             then 'true'
+        else 'false'
+        end as table_has_nested_paths,
+
+        case when field_path = column_name and lower (data_type) like ("%%json%%") or field_path = column_name and lower (data_type) like ("%%struct%%") or field_path = column_name and lower (data_type) like ("%%array%%")
+        then 'true'
+        else 'false'
+        end as is_parent_field,
+
+        replace (field_path, '.', '_') as field_name
+
+        from table_has_nested_paths
     '''
 
 elif ProjectVariables.warehouse == 'snowflake':

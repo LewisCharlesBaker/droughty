@@ -84,37 +84,37 @@ web_event_item_trim:  {
 } ,
 web_event_item_price_in_usd:  {
   sql: `web_event_item_price_in_usd`,
-  type: `number`,
+  type: `numeric`,
   description: `The price of the event-item in US Dollars (Vehicle price in USD)`,
 } ,
 web_event_item_price:  {
   sql: `web_event_item_price`,
-  type: `number`,
+  type: `numeric`,
   description: `The price of the event-item in local currency (Vehicle price in local currency = GBP)`,
 } ,
 web_event_item_quantity:  {
   sql: `web_event_item_quantity`,
-  type: `number`,
+  type: `numeric`,
   description: `The number of units for this event-item included in this ecommerce event (should always be 1 in our context)`,
 } ,
 web_event_item_revenue_in_usd:  {
   sql: `web_event_item_revenue_in_usd`,
-  type: `number`,
+  type: `numeric`,
   description: `The revenue of the event-item in US Dollars, calculated as item_price_in_usd * item_quantity (Vehicle revenue in USD) This is only populated for purchase events`,
 } ,
 web_event_item_revenue:  {
   sql: `web_event_item_revenue`,
-  type: `number`,
+  type: `numeric`,
   description: `The revenue of the event-item in local currency, calculated as item_price * item_quantity (Vehicle revenue in local currency = GBP) This is only populated for purchase events`,
 } ,
 web_event_item_refund_in_usd:  {
   sql: `web_event_item_refund_in_usd`,
-  type: `number`,
+  type: `numeric`,
   description: `The refund value of the event-item in US Dollars, calculated as item_price_in_usd * item_quantity (Vehicle revenue in USD) This is only populated for refund events`,
 } ,
 web_event_item_refund:  {
   sql: `web_event_item_refund`,
-  type: `number`,
+  type: `numeric`,
   description: `The refund value of the event-item in local currency, calculated as item_price * item_quantity (Vehicle revenue in local currency = GBP) This is only populated for refund events`,
 } ,
 web_event_item_coupon:  {
@@ -153,34 +153,6 @@ count_of_web_event_item_pk:  {
   sql: `web_event_item_pk`,
   type: `count`,
 } ,
-sum_of_web_event_item_price_in_usd:  {
-  sql: `web_event_item_price_in_usd`,
-  type: `sum`,
-} ,
-sum_of_web_event_item_price:  {
-  sql: `web_event_item_price`,
-  type: `sum`,
-} ,
-sum_of_web_event_item_quantity:  {
-  sql: `web_event_item_quantity`,
-  type: `sum`,
-} ,
-sum_of_web_event_item_revenue_in_usd:  {
-  sql: `web_event_item_revenue_in_usd`,
-  type: `sum`,
-} ,
-sum_of_web_event_item_revenue:  {
-  sql: `web_event_item_revenue`,
-  type: `sum`,
-} ,
-sum_of_web_event_item_refund_in_usd:  {
-  sql: `web_event_item_refund_in_usd`,
-  type: `sum`,
-} ,
-sum_of_web_event_item_refund:  {
-  sql: `web_event_item_refund`,
-  type: `sum`,
-} ,
 }});
 cube (`wh_marketing__web_event_parameters_fact`, {
 sql: `select * from analytics_qa.wh_marketing__web_event_parameters_fact`,
@@ -213,17 +185,17 @@ web_event_parameter_string_value:  {
 } ,
 web_event_parameter_int_value:  {
   sql: `web_event_parameter_int_value`,
-  type: `number`,
+  type: `int64`,
   description: `The integer value of the event parameter, if one exists`,
 } ,
 web_event_parameter_float_value:  {
   sql: `web_event_parameter_float_value`,
-  type: `number`,
+  type: `float64`,
   description: `The float value of the event parameter, if one exists`,
 } ,
 web_event_parameter_double_value:  {
   sql: `web_event_parameter_double_value`,
-  type: `number`,
+  type: `float64`,
   description: `The double value of the event parameter, if one exists`,
 } ,
 } ,
@@ -231,18 +203,6 @@ measures: {
 count_of_web_event_parameter_pk:  {
   sql: `web_event_parameter_pk`,
   type: `count`,
-} ,
-sum_of_web_event_parameter_int_value:  {
-  sql: `web_event_parameter_int_value`,
-  type: `sum`,
-} ,
-sum_of_web_event_parameter_float_value:  {
-  sql: `web_event_parameter_float_value`,
-  type: `sum`,
-} ,
-sum_of_web_event_parameter_double_value:  {
-  sql: `web_event_parameter_double_value`,
-  type: `sum`,
 } ,
 }});
 cube (`wh_marketing__web_event_query_parameters_fact`, {
@@ -312,17 +272,17 @@ web_event_visitor_property_string_value:  {
 } ,
 web_event_visitor_property_int_value:  {
   sql: `web_event_visitor_property_int_value`,
-  type: `number`,
+  type: `int64`,
   description: `The integer value of the visitor-property, if one exists`,
 } ,
 web_event_visitor_property_float_value:  {
   sql: `web_event_visitor_property_float_value`,
-  type: `number`,
+  type: `float64`,
   description: `The float value of the visitor-property, if one exists`,
 } ,
 web_event_visitor_property_double_value:  {
   sql: `web_event_visitor_property_double_value`,
-  type: `number`,
+  type: `float64`,
   description: `The double value of the visitor-property, if one exists`,
 } ,
 } ,
@@ -330,17 +290,5 @@ measures: {
 count_of_web_event_visitor_property_pk:  {
   sql: `web_event_visitor_property_pk`,
   type: `count`,
-} ,
-sum_of_web_event_visitor_property_int_value:  {
-  sql: `web_event_visitor_property_int_value`,
-  type: `sum`,
-} ,
-sum_of_web_event_visitor_property_float_value:  {
-  sql: `web_event_visitor_property_float_value`,
-  type: `sum`,
-} ,
-sum_of_web_event_visitor_property_double_value:  {
-  sql: `web_event_visitor_property_double_value`,
-  type: `sum`,
 } ,
 }});

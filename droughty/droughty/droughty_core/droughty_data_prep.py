@@ -16,7 +16,9 @@ def wrangle_bigquery_dataframes(dataframe):
 
     dataframe['description'] = dataframe['description'].fillna('not available')
 
-    dataframe = dataframe[['table_name','column_name','data_type','description']]
+    dataframe = dataframe[['table_name','column_name','data_type','description','field_path']]
+    dataframe['field_path'] = dataframe['field_path'].str.lower()
+    dataframe['data_type'] = dataframe['data_type'].str.lower()
 
     dataframe['data_type'] = dataframe['data_type'].str.replace('TIMESTAMP','timestamp')
     dataframe['data_type'] = dataframe['data_type'].str.replace('DATE','date')
@@ -204,7 +206,11 @@ def wrangle_bigquery_cube_dataframes(dataframe):
 
     dataframe['description'] = dataframe['description'].fillna('not available')
 
-    dataframe = dataframe[['table_name','column_name','data_type','description']]
+    dataframe = dataframe[['table_name','column_name','data_type','description','field_path','table_has_nested_paths']]
+    
+    dataframe['field_path'] = dataframe['field_path'].str.lower()
+    dataframe['data_type'] = dataframe['data_type'].str.lower()
+    dataframe['table_has_nested_paths'] = dataframe['table_has_nested_paths'].str.lower()
 
     dataframe['data_type'] = dataframe['data_type'].str.replace('TIMESTAMP','time')
     dataframe['data_type'] = dataframe['data_type'].str.replace('DATE','time')
@@ -241,3 +247,24 @@ def wrangle_snowflake_cube_dataframes(dataframe):
 
     return(dataframe)
 
+def wrangle_bigquery_cube_unnesting_dataframes(dataframe):
+
+    dataframe['description'] = dataframe['description'].fillna('not available')
+
+    dataframe = dataframe.loc[dataframe['table_has_nested_paths'] == 'true']
+
+    dataframe = dataframe[['table_name','column_name','data_type','description','field_path','table_has_nested_paths','is_parent_field','field_name']]
+    
+    dataframe['field_path'] = dataframe['field_path'].str.lower()
+    dataframe['data_type'] = dataframe['data_type'].str.lower()
+    dataframe['table_has_nested_paths'] = dataframe['table_has_nested_paths'].str.lower()
+
+    dataframe['data_type'] = dataframe['data_type'].str.replace('TIMESTAMP','time')
+    dataframe['data_type'] = dataframe['data_type'].str.replace('DATE','time')
+    dataframe['data_type'] = dataframe['data_type'].str.replace('INT64','number')
+    dataframe['data_type'] = dataframe['data_type'].str.replace('FLOAT64','number')
+    dataframe['data_type'] = dataframe['data_type'].str.replace('NUMERIC','number')
+    dataframe['data_type'] = dataframe['data_type'].str.replace('STRING','string')
+    dataframe['data_type'] = dataframe['data_type'].str.replace('BOOL','boolean')
+
+    return(dataframe)

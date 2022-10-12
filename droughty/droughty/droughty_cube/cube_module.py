@@ -22,33 +22,18 @@ from droughty.droughty_core.config import (
 )
 
 
-#def get_explore_tables():
-#    
-#    for explore_key in get_cube_explore_dict().keys():
-#
-#        print (explore_key)
+explore_list = []
 
-list_2 = ['wh_marketing__web_events_fact','wh_marketing__web_sessions_xa','wh_marketing__web_visitors_xa']
+for explore_key in get_cube_explore_dict().keys():
 
-list_3 = []
-
-#for i in get_cube_explore_dict().keys():
-#
-#    print(i)
-#
-#    list_3.append(i)
-#
-#
-#print (get_cube_explore_dict())
-#
-#print(list_3)
+    explore_list.append(explore_key)
 
     
 def get_all_values(nested_dictionary,explore_dictionary):
 
     for key,value in nested_dictionary.items():
 
-        if key not in list_2:
+        if key not in explore_list:
             
             explore = {
 
@@ -58,7 +43,6 @@ def get_all_values(nested_dictionary,explore_dictionary):
                 "dimensions": '{'
 
             }
-
 
             yield(cube.dump(explore))
 

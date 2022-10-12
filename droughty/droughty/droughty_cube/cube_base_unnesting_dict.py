@@ -17,14 +17,14 @@ from droughty.droughty_core.config import (
     get_snowflake_connector_url
 )
 from droughty.droughty_core.droughty_data_prep import (
-    wrangle_bigquery_cube_dataframes,
+    wrangle_bigquery_cube_unnesting_dataframes,
     wrangle_snowflake_cube_dataframes
 )
 class CubeBaseDictVariables():
 
     distinct_duplicate_explore_rows: str
 
-def get_cube_base_dict():
+def get_cube_base_nested_dict():
 
     pd.options.mode.chained_assignment = None
 
@@ -40,7 +40,7 @@ def get_cube_base_dict():
 
         dataframe = pandas.read_gbq(sql, dialect='standard', project_id=project, credentials=credentials)
 
-        wrangled_dataframe = wrangle_bigquery_cube_dataframes(dataframe)
+        wrangled_dataframe = wrangle_bigquery_cube_unnesting_dataframes(dataframe)
 
         explore_df = pandas.read_gbq(explore_sql, dialect='standard', project_id=project, credentials=credentials)
 
@@ -79,7 +79,7 @@ def get_cube_base_dict():
 
         wrangled_dataframe = {n: grp.loc[n].to_dict('index')
             
-        for n, grp in wrangled_dataframe.set_index(['table_name', 'column_name','data_type','description','field_path','table_has_nested_paths']).groupby(level='table_name')}
+        for n, grp in wrangled_dataframe.set_index(['table_name', 'column_name','data_type','description','field_path','table_has_nested_paths','is_parent_field','field_name']).groupby(level='table_name')}
 
         return(wrangled_dataframe)
 

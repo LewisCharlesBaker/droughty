@@ -62,7 +62,7 @@ web_event_session_natural_key:  {
 } ,
 web_event_sequence_number:  {
   sql: `web_event_sequence_number`,
-  type: `number`,
+  type: `int64`,
   description: `Sequence number for the event within its session i.e. A data value of 1 identifies the first event in a session`,
 } ,
 web_event_bundle_sequence_natural_key:  {
@@ -217,7 +217,7 @@ web_event_intent:  {
 } ,
 web_event_intent_rank:  {
   sql: `web_event_intent_rank`,
-  type: `number`,
+  type: `numeric`,
   description: ``,
 } ,
 web_event_mf_level:  {
@@ -467,102 +467,102 @@ web_event_privacy_info_uses_transient_token:  {
 } ,
 web_event_ecommerce_total_item_quantity:  {
   sql: `web_event_ecommerce_total_item_quantity`,
-  type: `number`,
+  type: `numeric`,
   description: `For ecommerce events: The total number of items in this event (based on the sum of web_event_items_fact.web_event_item_quantity)`,
 } ,
 web_event_ecommerce_unique_items:  {
   sql: `web_event_ecommerce_unique_items`,
-  type: `number`,
+  type: `numeric`,
   description: `For ecommerce events: The number of unique items in this event (based on the unique combinations of item_id, item_name and item_brand (from web_event_items_fact))`,
 } ,
 web_event_ecommerce_purchase_revenue_in_usd:  {
   sql: `web_event_ecommerce_purchase_revenue_in_usd`,
-  type: `number`,
+  type: `numeric`,
   description: `For ecommerce purchase events: The purchase revenue of this event, represented in US Dollars (where the revenue is calculated as the price * quantity)`,
 } ,
 web_event_ecommerce_purchase_revenue:  {
   sql: `web_event_ecommerce_purchase_revenue`,
-  type: `number`,
+  type: `numeric`,
   description: `For ecommerce purchase events: The purchase revenue of this event, represented in local currency (where the revenue is calculated as the price * quantity)`,
 } ,
 web_event_ecommerce_refund_value_in_usd:  {
   sql: `web_event_ecommerce_refund_value_in_usd`,
-  type: `number`,
+  type: `numeric`,
   description: `For ecommerce refund events: The refund amount of this event, represented in US Dollars (where the refund amount is calculated as the price * quantity)`,
 } ,
 web_event_ecommerce_refund_value:  {
   sql: `web_event_ecommerce_refund_value`,
-  type: `number`,
+  type: `numeric`,
   description: `For ecommerce refund events: The refund amount of this event, represented in local currency (where the refund amount is calculated as the price * quantity)`,
 } ,
 web_event_ecommerce_shipping_value_in_usd:  {
   sql: `web_event_ecommerce_shipping_value_in_usd`,
-  type: `number`,
+  type: `numeric`,
   description: `For ecommerce events: The shipping cost of this event, represented in US Dollars (where we have repurposed the 'shipping info' to cover our 'billing info')`,
 } ,
 web_event_ecommerce_shipping_value:  {
   sql: `web_event_ecommerce_shipping_value`,
-  type: `number`,
+  type: `numeric`,
   description: `For ecommerce events: The shipping cost of this event, represented in local currency (where we have repurposed the 'shipping info' to cover our 'billing info')`,
 } ,
 web_event_ecommerce_tax_value_in_usd:  {
   sql: `web_event_ecommerce_tax_value_in_usd`,
-  type: `number`,
+  type: `numeric`,
   description: `For ecommerce events: The tax value in this event, represented in US Dollars`,
 } ,
 web_event_ecommerce_tax_value:  {
   sql: `web_event_ecommerce_tax_value`,
-  type: `number`,
+  type: `numeric`,
   description: `For ecommerce events: The tax value in this event, represented in local currency`,
 } ,
 web_event_value_in_usd:  {
   sql: `web_event_value_in_usd`,
-  type: `number`,
+  type: `numeric`,
   description: `The currency-converted value (in US Dollars) of the event's value parameter`,
 } ,
 web_event_entrances:  {
   sql: `web_event_entrances`,
-  type: `number`,
+  type: `numeric`,
   description: `A data value of 1 in this column indicates that the event is for an entrance to the website`,
 } ,
 web_event_device_time_zone_offset_seconds:  {
   sql: `web_event_device_time_zone_offset_seconds`,
-  type: `number`,
+  type: `int64`,
   description: `Device's offset from the GMT time zone in seconds`,
 } ,
 web_event_ga_engaged_event:  {
   sql: `web_event_ga_engaged_event`,
-  type: `number`,
+  type: `numeric`,
   description: `A data value of 'true' in this column indicates that the event caused Google Analytics (GA) to count the session as an 'engaged session', according to GA's own definition of 'engagement', namely: The session lasted longer than 10 seconds, had a conversion event, or had 2 or more screen views or page views. Note: GA's definition of an 'engaged session' is different to our definition of an 'engaged session'.`,
 } ,
 web_event_was_visitor_natural_key_null:  {
   sql: `web_event_was_visitor_natural_key_null`,
-  type: `number`,
+  type: `int64`,
   description: `Flag to identify if the original value for the visitor natural key was null in the source data, and subsequently populated with a surrogate key`,
 } ,
 web_event_was_session_natural_key_null:  {
   sql: `web_event_was_session_natural_key_null`,
-  type: `number`,
+  type: `int64`,
   description: `Flag to identify if the original value for the session natural key was null in the source data, and subsequently populated with a surrogate key`,
 } ,
 web_event_visitor_ga_first_touch_ts:  {
   sql: `web_event_visitor_ga_first_touch_ts`,
-  type: `time`,
+  type: `timestamp`,
   description: `The time at which the user first opened the app or visited the site as record by GA`,
 } ,
 web_event_dt:  {
   sql: `web_event_dt`,
-  type: `time`,
+  type: `date`,
   description: `The date that the event fired (using UTC time zone)`,
 } ,
 web_event_ts:  {
   sql: `web_event_ts`,
-  type: `time`,
+  type: `timestamp`,
   description: `The timestamp that the event fired (using UTC time zone)`,
 } ,
 web_event_server_timestamp_offset_ts:  {
   sql: `web_event_server_timestamp_offset_ts`,
-  type: `time`,
+  type: `timestamp`,
   description: `Timestamp offset between collection time and upload time in micro seconds`,
 } ,
 } ,
@@ -570,78 +570,6 @@ measures: {
 count_of_web_event_pk:  {
   sql: `web_event_pk`,
   type: `count`,
-} ,
-sum_of_web_event_sequence_number:  {
-  sql: `web_event_sequence_number`,
-  type: `sum`,
-} ,
-sum_of_web_event_intent_rank:  {
-  sql: `web_event_intent_rank`,
-  type: `sum`,
-} ,
-sum_of_web_event_ecommerce_total_item_quantity:  {
-  sql: `web_event_ecommerce_total_item_quantity`,
-  type: `sum`,
-} ,
-sum_of_web_event_ecommerce_unique_items:  {
-  sql: `web_event_ecommerce_unique_items`,
-  type: `sum`,
-} ,
-sum_of_web_event_ecommerce_purchase_revenue_in_usd:  {
-  sql: `web_event_ecommerce_purchase_revenue_in_usd`,
-  type: `sum`,
-} ,
-sum_of_web_event_ecommerce_purchase_revenue:  {
-  sql: `web_event_ecommerce_purchase_revenue`,
-  type: `sum`,
-} ,
-sum_of_web_event_ecommerce_refund_value_in_usd:  {
-  sql: `web_event_ecommerce_refund_value_in_usd`,
-  type: `sum`,
-} ,
-sum_of_web_event_ecommerce_refund_value:  {
-  sql: `web_event_ecommerce_refund_value`,
-  type: `sum`,
-} ,
-sum_of_web_event_ecommerce_shipping_value_in_usd:  {
-  sql: `web_event_ecommerce_shipping_value_in_usd`,
-  type: `sum`,
-} ,
-sum_of_web_event_ecommerce_shipping_value:  {
-  sql: `web_event_ecommerce_shipping_value`,
-  type: `sum`,
-} ,
-sum_of_web_event_ecommerce_tax_value_in_usd:  {
-  sql: `web_event_ecommerce_tax_value_in_usd`,
-  type: `sum`,
-} ,
-sum_of_web_event_ecommerce_tax_value:  {
-  sql: `web_event_ecommerce_tax_value`,
-  type: `sum`,
-} ,
-sum_of_web_event_value_in_usd:  {
-  sql: `web_event_value_in_usd`,
-  type: `sum`,
-} ,
-sum_of_web_event_entrances:  {
-  sql: `web_event_entrances`,
-  type: `sum`,
-} ,
-sum_of_web_event_device_time_zone_offset_seconds:  {
-  sql: `web_event_device_time_zone_offset_seconds`,
-  type: `sum`,
-} ,
-sum_of_web_event_ga_engaged_event:  {
-  sql: `web_event_ga_engaged_event`,
-  type: `sum`,
-} ,
-sum_of_web_event_was_visitor_natural_key_null:  {
-  sql: `web_event_was_visitor_natural_key_null`,
-  type: `sum`,
-} ,
-sum_of_web_event_was_session_natural_key_null:  {
-  sql: `web_event_was_session_natural_key_null`,
-  type: `sum`,
 } ,
 }});
 cube (`wh_marketing__web_visitors_xa`, {
@@ -675,9 +603,8 @@ web_event_visitor_natural_key:  {
 } ,
 web_visitor_wh_generated:  {
   sql: `web_visitor_wh_generated`,
-  type: `number`,
-  description: `,
-Flag to identify whether the visitor has been generated by the warehouse (with data value = 1) as opposed to identifying a visitor that came through in the GA clickstream data (with data value = 0)`,
+  type: `int64`,
+  description: `Flag to identify whether the visitor has been generated by the warehouse (with data value = 1) as opposed to identifying a visitor that came through in the GA clickstream data (with data value = 0)`,
 } ,
 web_visitor_data_source:  {
   sql: `web_visitor_data_source`,
@@ -691,72 +618,72 @@ web_visitor_website_property:  {
 } ,
 web_visitor_total_sessions:  {
   sql: `web_visitor_total_sessions`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of sessions for the visitor`,
 } ,
 web_visitor_total_events:  {
   sql: `web_visitor_total_events`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of events (across all sessions) for the visitor`,
 } ,
 web_visitor_ga_engaged_visitor:  {
   sql: `web_visitor_ga_engaged_visitor`,
-  type: `number`,
+  type: `int64`,
   description: `A data value of 'true' in this column indicates that Google Analytics (GA) has deemed the visitor to be an 'engaged visitor' (because it has one or more events that were deemed to be an 'engaged event'). Where GA's definition of 'engagement' is as follows: The session lasted longer than 10 seconds, had a conversion event, or had 2 or more screen views or page views. Note: GA's definition of an 'engaged session' is different to our definition of an 'engaged session'.`,
 } ,
 web_visitor_total_page_views:  {
   sql: `web_visitor_total_page_views`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of page_view events across all sessions for the visitor`,
 } ,
 web_visitor_total_search_results_page_views:  {
   sql: `web_visitor_total_search_results_page_views`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of search result (SRP) page_view events across all sessions for the visitorfor the visitor`,
 } ,
 web_visitor_total_vehicle_details_page_views:  {
   sql: `web_visitor_total_vehicle_details_page_views`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of vehicle details (VDP) page_view events across all sessions for the visitorsessions for the visitor`,
 } ,
 web_visitor_total_level_2_events:  {
   sql: `web_visitor_total_level_2_events`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of events across all sessions for the visitor that were 'level 2 engagement events' according to the measurement framework`,
 } ,
 web_visitor_total_level_3_events:  {
   sql: `web_visitor_total_level_3_events`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of events across all sessions for the visitor that were 'level 3 enquiry events' according to the measurement framework (i.e. number of enquiry form submits)`,
 } ,
 web_visitor_total_level_4_events:  {
   sql: `web_visitor_total_level_4_events`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of events across all sessions for the visitor that were 'level 4 transaction events' according to the measurement framework (i.e. number of completed transactions)`,
 } ,
 web_visitor_total_level_2_vdp:  {
   sql: `web_visitor_total_level_2_vdp`,
-  type: `number`,
+  type: `int64`,
   description: `Number of Vehicle Detail Pages (VDPs) visited by the visitor with at least one 'level 2 engagement event' fired from that VDP i.e. Reflects the number of vehicles that the visitor 'engaged' with according to the measurement framework`,
 } ,
 web_visitor_first_session_start_date:  {
   sql: `web_visitor_first_session_start_date`,
-  type: `time`,
+  type: `date`,
   description: `Date for the visitor’s first session`,
 } ,
 web_visitor_first_session_start_timestamp:  {
   sql: `web_visitor_first_session_start_timestamp`,
-  type: `time`,
+  type: `timestamp`,
   description: `Date and time for the visitor’s first session`,
 } ,
 web_visitor_last_session_start_date:  {
   sql: `web_visitor_last_session_start_date`,
-  type: `time`,
+  type: `date`,
   description: `Date for the visitor’s last session`,
 } ,
 web_visitor_last_session_start_timestamp:  {
   sql: `web_visitor_last_session_start_timestamp`,
-  type: `time`,
+  type: `timestamp`,
   description: `Date and time for the visitor’s last session`,
 } ,
 web_visitor_first_not_null_intent:  {
@@ -830,50 +757,6 @@ count_of_web_visitor_pk:  {
   sql: `web_visitor_pk`,
   type: `count`,
 } ,
-sum_of_web_visitor_wh_generated:  {
-  sql: `web_visitor_wh_generated`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_sessions:  {
-  sql: `web_visitor_total_sessions`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_events:  {
-  sql: `web_visitor_total_events`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_ga_engaged_visitor:  {
-  sql: `web_visitor_ga_engaged_visitor`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_page_views:  {
-  sql: `web_visitor_total_page_views`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_search_results_page_views:  {
-  sql: `web_visitor_total_search_results_page_views`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_vehicle_details_page_views:  {
-  sql: `web_visitor_total_vehicle_details_page_views`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_level_2_events:  {
-  sql: `web_visitor_total_level_2_events`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_level_3_events:  {
-  sql: `web_visitor_total_level_3_events`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_level_4_events:  {
-  sql: `web_visitor_total_level_4_events`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_level_2_vdp:  {
-  sql: `web_visitor_total_level_2_vdp`,
-  type: `sum`,
-} ,
 }});
 cube (`wh_marketing__web_sessions_xa`, {
 sql: `select * from analytics_qa.wh_marketing__web_sessions_xa`,
@@ -917,7 +800,7 @@ web_session_compound_key:  {
 } ,
 web_session_wh_generated:  {
   sql: `web_session_wh_generated`,
-  type: `number`,
+  type: `int64`,
   description: `Flag to identify whether the session has been generated by the warehouse (with data value = 1) as opposed to identifying a session that came through in the GA clickstream data (with data value = 0)`,
 } ,
 web_session_data_source:  {
@@ -932,62 +815,62 @@ web_session_website_property:  {
 } ,
 web_session_number:  {
   sql: `web_session_number`,
-  type: `number`,
+  type: `int64`,
   description: `Ordinal session count for this visitor e.g. For the visitor's first session, the data value will be 1. For the visitor's second session, the data value will be 2.`,
 } ,
 web_session_ga_engaged_session:  {
   sql: `web_session_ga_engaged_session`,
-  type: `number`,
+  type: `int64`,
   description: `A data value of 'true' in this column indicates that Google Analytics (GA) has deemed the session to be an 'engaged session' (because it has one or more events that were deemed to be an 'engaged event'). Where GA's definition of 'engagement' is as follows: The session lasted longer than 10 seconds, had a conversion event, or had 2 or more screen views or page views. Note: GA's definition of an 'engaged session' is different to our definition of an 'engaged session'.`,
 } ,
 web_session_total_events:  {
   sql: `web_session_total_events`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of events within the session`,
 } ,
 web_session_total_ga_engaged_events:  {
   sql: `web_session_total_ga_engaged_events`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of events within the session that Google Analytics (GA) deemed to be an 'engaged event'. Where GA's definition of 'engagement' is as follows: The session lasted longer than 10 seconds, had a conversion event, or had 2 or more screen views or page views. Note: GA's definition of an 'engaged session' is different to our definition of an 'engaged session'.`,
 } ,
 web_session_total_page_views:  {
   sql: `web_session_total_page_views`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of page_view events within the session`,
 } ,
 web_session_total_search_results_page_views:  {
   sql: `web_session_total_search_results_page_views`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of search result (SRP) page_view events within the session`,
 } ,
 web_session_total_vehicle_details_page_views:  {
   sql: `web_session_total_vehicle_details_page_views`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of vehicle details (VDP) page_view events within the session`,
 } ,
 web_session_total_level_2_events:  {
   sql: `web_session_total_level_2_events`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of events within the session that were 'level 2 engagement events' according to the measurement framework`,
 } ,
 web_session_total_level_3_events:  {
   sql: `web_session_total_level_3_events`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of events within the session that were 'level 3 enquiry events' according to the measurement framework (i.e. number of enquiry form submits)`,
 } ,
 web_session_total_level_4_events:  {
   sql: `web_session_total_level_4_events`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of events within the session that were 'level 4 transaction events' according to the measurement framework (i.e. number of completed transactions)`,
 } ,
 web_session_total_level_2_vdp:  {
   sql: `web_session_total_level_2_vdp`,
-  type: `number`,
+  type: `int64`,
   description: `Number of Vehicle Detail Pages (VDPs) visited by the session with at least one 'level 2 engagement event' fired from that VDP i.e. Reflects the number of vehicles that the session 'engaged' with according to the measurement framework`,
 } ,
 web_session_total_intents:  {
   sql: `web_session_total_intents`,
-  type: `number`,
+  type: `int64`,
   description: `The number of different intents exhibited by the session`,
 } ,
 web_session_landing_page_hostname:  {
@@ -1292,7 +1175,7 @@ web_session_first_not_null_device_language:  {
 } ,
 web_session_first_not_null_device_time_zone_offset_seconds:  {
   sql: `web_session_first_not_null_device_time_zone_offset_seconds`,
-  type: `number`,
+  type: `int64`,
   description: `The first non-null device_time_zone_offset_seconds in the session`,
 } ,
 web_session_first_not_null_device_is_limited_ad_tracking:  {
@@ -1362,22 +1245,22 @@ web_session_first_not_null_privacy_info_uses_transient_token:  {
 } ,
 web_session_start_timestamp:  {
   sql: `web_session_start_timestamp`,
-  type: `time`,
+  type: `timestamp`,
   description: `The timestamp of the first event in the session`,
 } ,
 web_session_end_timestamp:  {
   sql: `web_session_end_timestamp`,
-  type: `time`,
+  type: `timestamp`,
   description: `The timestamp of the last event in the session`,
 } ,
 web_session_start_date:  {
   sql: `web_session_start_date`,
-  type: `time`,
+  type: `date`,
   description: `The date of the first event in the session - excluding timestamp`,
 } ,
 web_session_duration_seconds:  {
   sql: `web_session_duration_seconds`,
-  type: `number`,
+  type: `int64`,
   description: `Number of seconds between the timestamps for the first and last events in the session`,
 } ,
 } ,
@@ -1386,66 +1269,6 @@ count_of_web_session_pk:  {
   sql: `web_session_pk`,
   type: `count`,
 } ,
-sum_of_web_session_wh_generated:  {
-  sql: `web_session_wh_generated`,
-  type: `sum`,
-} ,
-sum_of_web_session_number:  {
-  sql: `web_session_number`,
-  type: `sum`,
-} ,
-sum_of_web_session_ga_engaged_session:  {
-  sql: `web_session_ga_engaged_session`,
-  type: `sum`,
-} ,
-sum_of_web_session_total_events:  {
-  sql: `web_session_total_events`,
-  type: `sum`,
-} ,
-sum_of_web_session_total_ga_engaged_events:  {
-  sql: `web_session_total_ga_engaged_events`,
-  type: `sum`,
-} ,
-sum_of_web_session_total_page_views:  {
-  sql: `web_session_total_page_views`,
-  type: `sum`,
-} ,
-sum_of_web_session_total_search_results_page_views:  {
-  sql: `web_session_total_search_results_page_views`,
-  type: `sum`,
-} ,
-sum_of_web_session_total_vehicle_details_page_views:  {
-  sql: `web_session_total_vehicle_details_page_views`,
-  type: `sum`,
-} ,
-sum_of_web_session_total_level_2_events:  {
-  sql: `web_session_total_level_2_events`,
-  type: `sum`,
-} ,
-sum_of_web_session_total_level_3_events:  {
-  sql: `web_session_total_level_3_events`,
-  type: `sum`,
-} ,
-sum_of_web_session_total_level_4_events:  {
-  sql: `web_session_total_level_4_events`,
-  type: `sum`,
-} ,
-sum_of_web_session_total_level_2_vdp:  {
-  sql: `web_session_total_level_2_vdp`,
-  type: `sum`,
-} ,
-sum_of_web_session_total_intents:  {
-  sql: `web_session_total_intents`,
-  type: `sum`,
-} ,
-sum_of_web_session_first_not_null_device_time_zone_offset_seconds:  {
-  sql: `web_session_first_not_null_device_time_zone_offset_seconds`,
-  type: `sum`,
-} ,
-sum_of_web_session_duration_seconds:  {
-  sql: `web_session_duration_seconds`,
-  type: `sum`,
-} ,
 }});
 cube (`wh_marketing__web_visitors_xa`, {
 sql: `select * from analytics_qa.wh_marketing__web_visitors_xa`,
@@ -1478,9 +1301,8 @@ web_event_visitor_natural_key:  {
 } ,
 web_visitor_wh_generated:  {
   sql: `web_visitor_wh_generated`,
-  type: `number`,
-  description: `,
-Flag to identify whether the visitor has been generated by the warehouse (with data value = 1) as opposed to identifying a visitor that came through in the GA clickstream data (with data value = 0)`,
+  type: `int64`,
+  description: `Flag to identify whether the visitor has been generated by the warehouse (with data value = 1) as opposed to identifying a visitor that came through in the GA clickstream data (with data value = 0)`,
 } ,
 web_visitor_data_source:  {
   sql: `web_visitor_data_source`,
@@ -1494,72 +1316,72 @@ web_visitor_website_property:  {
 } ,
 web_visitor_total_sessions:  {
   sql: `web_visitor_total_sessions`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of sessions for the visitor`,
 } ,
 web_visitor_total_events:  {
   sql: `web_visitor_total_events`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of events (across all sessions) for the visitor`,
 } ,
 web_visitor_ga_engaged_visitor:  {
   sql: `web_visitor_ga_engaged_visitor`,
-  type: `number`,
+  type: `int64`,
   description: `A data value of 'true' in this column indicates that Google Analytics (GA) has deemed the visitor to be an 'engaged visitor' (because it has one or more events that were deemed to be an 'engaged event'). Where GA's definition of 'engagement' is as follows: The session lasted longer than 10 seconds, had a conversion event, or had 2 or more screen views or page views. Note: GA's definition of an 'engaged session' is different to our definition of an 'engaged session'.`,
 } ,
 web_visitor_total_page_views:  {
   sql: `web_visitor_total_page_views`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of page_view events across all sessions for the visitor`,
 } ,
 web_visitor_total_search_results_page_views:  {
   sql: `web_visitor_total_search_results_page_views`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of search result (SRP) page_view events across all sessions for the visitorfor the visitor`,
 } ,
 web_visitor_total_vehicle_details_page_views:  {
   sql: `web_visitor_total_vehicle_details_page_views`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of vehicle details (VDP) page_view events across all sessions for the visitorsessions for the visitor`,
 } ,
 web_visitor_total_level_2_events:  {
   sql: `web_visitor_total_level_2_events`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of events across all sessions for the visitor that were 'level 2 engagement events' according to the measurement framework`,
 } ,
 web_visitor_total_level_3_events:  {
   sql: `web_visitor_total_level_3_events`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of events across all sessions for the visitor that were 'level 3 enquiry events' according to the measurement framework (i.e. number of enquiry form submits)`,
 } ,
 web_visitor_total_level_4_events:  {
   sql: `web_visitor_total_level_4_events`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of events across all sessions for the visitor that were 'level 4 transaction events' according to the measurement framework (i.e. number of completed transactions)`,
 } ,
 web_visitor_total_level_2_vdp:  {
   sql: `web_visitor_total_level_2_vdp`,
-  type: `number`,
+  type: `int64`,
   description: `Number of Vehicle Detail Pages (VDPs) visited by the visitor with at least one 'level 2 engagement event' fired from that VDP i.e. Reflects the number of vehicles that the visitor 'engaged' with according to the measurement framework`,
 } ,
 web_visitor_first_session_start_date:  {
   sql: `web_visitor_first_session_start_date`,
-  type: `time`,
+  type: `date`,
   description: `Date for the visitor’s first session`,
 } ,
 web_visitor_first_session_start_timestamp:  {
   sql: `web_visitor_first_session_start_timestamp`,
-  type: `time`,
+  type: `timestamp`,
   description: `Date and time for the visitor’s first session`,
 } ,
 web_visitor_last_session_start_date:  {
   sql: `web_visitor_last_session_start_date`,
-  type: `time`,
+  type: `date`,
   description: `Date for the visitor’s last session`,
 } ,
 web_visitor_last_session_start_timestamp:  {
   sql: `web_visitor_last_session_start_timestamp`,
-  type: `time`,
+  type: `timestamp`,
   description: `Date and time for the visitor’s last session`,
 } ,
 web_visitor_first_not_null_intent:  {
@@ -1633,50 +1455,6 @@ count_of_web_visitor_pk:  {
   sql: `web_visitor_pk`,
   type: `count`,
 } ,
-sum_of_web_visitor_wh_generated:  {
-  sql: `web_visitor_wh_generated`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_sessions:  {
-  sql: `web_visitor_total_sessions`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_events:  {
-  sql: `web_visitor_total_events`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_ga_engaged_visitor:  {
-  sql: `web_visitor_ga_engaged_visitor`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_page_views:  {
-  sql: `web_visitor_total_page_views`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_search_results_page_views:  {
-  sql: `web_visitor_total_search_results_page_views`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_vehicle_details_page_views:  {
-  sql: `web_visitor_total_vehicle_details_page_views`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_level_2_events:  {
-  sql: `web_visitor_total_level_2_events`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_level_3_events:  {
-  sql: `web_visitor_total_level_3_events`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_level_4_events:  {
-  sql: `web_visitor_total_level_4_events`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_level_2_vdp:  {
-  sql: `web_visitor_total_level_2_vdp`,
-  type: `sum`,
-} ,
 }});
 cube (`wh_marketing__web_visitors_xa`, {
 sql: `select * from analytics_qa.wh_marketing__web_visitors_xa`,
@@ -1709,9 +1487,8 @@ web_event_visitor_natural_key:  {
 } ,
 web_visitor_wh_generated:  {
   sql: `web_visitor_wh_generated`,
-  type: `number`,
-  description: `,
-Flag to identify whether the visitor has been generated by the warehouse (with data value = 1) as opposed to identifying a visitor that came through in the GA clickstream data (with data value = 0)`,
+  type: `int64`,
+  description: `Flag to identify whether the visitor has been generated by the warehouse (with data value = 1) as opposed to identifying a visitor that came through in the GA clickstream data (with data value = 0)`,
 } ,
 web_visitor_data_source:  {
   sql: `web_visitor_data_source`,
@@ -1725,72 +1502,72 @@ web_visitor_website_property:  {
 } ,
 web_visitor_total_sessions:  {
   sql: `web_visitor_total_sessions`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of sessions for the visitor`,
 } ,
 web_visitor_total_events:  {
   sql: `web_visitor_total_events`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of events (across all sessions) for the visitor`,
 } ,
 web_visitor_ga_engaged_visitor:  {
   sql: `web_visitor_ga_engaged_visitor`,
-  type: `number`,
+  type: `int64`,
   description: `A data value of 'true' in this column indicates that Google Analytics (GA) has deemed the visitor to be an 'engaged visitor' (because it has one or more events that were deemed to be an 'engaged event'). Where GA's definition of 'engagement' is as follows: The session lasted longer than 10 seconds, had a conversion event, or had 2 or more screen views or page views. Note: GA's definition of an 'engaged session' is different to our definition of an 'engaged session'.`,
 } ,
 web_visitor_total_page_views:  {
   sql: `web_visitor_total_page_views`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of page_view events across all sessions for the visitor`,
 } ,
 web_visitor_total_search_results_page_views:  {
   sql: `web_visitor_total_search_results_page_views`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of search result (SRP) page_view events across all sessions for the visitorfor the visitor`,
 } ,
 web_visitor_total_vehicle_details_page_views:  {
   sql: `web_visitor_total_vehicle_details_page_views`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of vehicle details (VDP) page_view events across all sessions for the visitorsessions for the visitor`,
 } ,
 web_visitor_total_level_2_events:  {
   sql: `web_visitor_total_level_2_events`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of events across all sessions for the visitor that were 'level 2 engagement events' according to the measurement framework`,
 } ,
 web_visitor_total_level_3_events:  {
   sql: `web_visitor_total_level_3_events`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of events across all sessions for the visitor that were 'level 3 enquiry events' according to the measurement framework (i.e. number of enquiry form submits)`,
 } ,
 web_visitor_total_level_4_events:  {
   sql: `web_visitor_total_level_4_events`,
-  type: `number`,
+  type: `int64`,
   description: `Total number of events across all sessions for the visitor that were 'level 4 transaction events' according to the measurement framework (i.e. number of completed transactions)`,
 } ,
 web_visitor_total_level_2_vdp:  {
   sql: `web_visitor_total_level_2_vdp`,
-  type: `number`,
+  type: `int64`,
   description: `Number of Vehicle Detail Pages (VDPs) visited by the visitor with at least one 'level 2 engagement event' fired from that VDP i.e. Reflects the number of vehicles that the visitor 'engaged' with according to the measurement framework`,
 } ,
 web_visitor_first_session_start_date:  {
   sql: `web_visitor_first_session_start_date`,
-  type: `time`,
+  type: `date`,
   description: `Date for the visitor’s first session`,
 } ,
 web_visitor_first_session_start_timestamp:  {
   sql: `web_visitor_first_session_start_timestamp`,
-  type: `time`,
+  type: `timestamp`,
   description: `Date and time for the visitor’s first session`,
 } ,
 web_visitor_last_session_start_date:  {
   sql: `web_visitor_last_session_start_date`,
-  type: `time`,
+  type: `date`,
   description: `Date for the visitor’s last session`,
 } ,
 web_visitor_last_session_start_timestamp:  {
   sql: `web_visitor_last_session_start_timestamp`,
-  type: `time`,
+  type: `timestamp`,
   description: `Date and time for the visitor’s last session`,
 } ,
 web_visitor_first_not_null_intent:  {
@@ -1863,49 +1640,5 @@ measures: {
 count_of_web_visitor_pk:  {
   sql: `web_visitor_pk`,
   type: `count`,
-} ,
-sum_of_web_visitor_wh_generated:  {
-  sql: `web_visitor_wh_generated`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_sessions:  {
-  sql: `web_visitor_total_sessions`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_events:  {
-  sql: `web_visitor_total_events`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_ga_engaged_visitor:  {
-  sql: `web_visitor_ga_engaged_visitor`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_page_views:  {
-  sql: `web_visitor_total_page_views`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_search_results_page_views:  {
-  sql: `web_visitor_total_search_results_page_views`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_vehicle_details_page_views:  {
-  sql: `web_visitor_total_vehicle_details_page_views`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_level_2_events:  {
-  sql: `web_visitor_total_level_2_events`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_level_3_events:  {
-  sql: `web_visitor_total_level_3_events`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_level_4_events:  {
-  sql: `web_visitor_total_level_4_events`,
-  type: `sum`,
-} ,
-sum_of_web_visitor_total_level_2_vdp:  {
-  sql: `web_visitor_total_level_2_vdp`,
-  type: `sum`,
 } ,
 }});
