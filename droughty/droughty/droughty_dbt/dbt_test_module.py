@@ -18,13 +18,25 @@ from droughty.droughty_core.config import (
     IdentifyConfigVariables,
     ExploresVariables
 )
+from droughty.droughty_dbt.dbt_version_util import is_version_gte_1_8
 
 import sys
 import ruamel.yaml
 import git
 
 
+def get_test_definition_key():
+    """
+    Returns the appropriate test definition key based on the dbt version.
+    """
+    if is_version_gte_1_8():
+        return "data_tests"
+    else:
+        return "tests"
+
 def get_all_values(nested_dictionary):
+    
+    tests_config_key = get_test_definition_key()
 
     test_overwrite = ExploresVariables.test_overwrite
 
@@ -63,22 +75,22 @@ def get_all_values(nested_dictionary):
 
                         if "pk" in key1 and "not_null" not in value1 and "unique" not in value1:
                             
-                            elem = {"name": key1, "description": "{{doc("+'"'+key1+'"'+")}}", "tests": ["not_null","unique"]}
+                            elem = {"name": key1, "description": "{{doc("+'"'+key1+'"'+")}}", tests_config_key: ["not_null","unique"]}
                             seq.append(elem)
                             
                         elif "fk" in key1:
                             
-                            elem = {"name": key1, "description": "{{doc("+'"'+key1+'"'+")}}", "tests": ["dbt_utils.at_least_one"]}
+                            elem = {"name": key1, "description": "{{doc("+'"'+key1+'"'+")}}", tests_config_key: ["dbt_utils.at_least_one"]}
                             seq.append(elem)   
                             
                         elif "valid_to" in key1 or "valid_from" in key1:
                             
-                            elem = {"name": key1, "description": "{{doc("+'"'+key1+'"'+")}}", "tests": ["dbt_utils.expression_is_true"":""expression"":"" valid_from < valid_to","not_null","unique"]}
+                            elem = {"name": key1, "description": "{{doc("+'"'+key1+'"'+")}}", tests_config_key: ["dbt_utils.expression_is_true"":""expression"":"" valid_from < valid_to","not_null","unique"]}
                             seq.append(elem)  
 
                         elif "pk" not in key1 or "fk" not in key1:
                     
-                            elem = {"name": key1, "description": "{{doc("+'"'+key1+'"'+")}}", "tests": [""+"dbt_utils.at_least_one"]}
+                            elem = {"name": key1, "description": "{{doc("+'"'+key1+'"'+")}}", tests_config_key: [""+"dbt_utils.at_least_one"]}
                             seq.append(elem)  
 
                         elif "pk" not in key1 or "fk" not in key1:
@@ -90,22 +102,22 @@ def get_all_values(nested_dictionary):
 
                             if "pk" in key1:
                                 
-                                elem = {"name": key1, "tests": ["not_null","unique"]}
+                                elem = {"name": key1, tests_config_key: ["not_null","unique"]}
                                 seq.append(elem)
                                 
                             elif "fk" in key1:
                                 
-                                elem = {"name": key1, "tests": ["dbt_utils.at_least_one"]}
+                                elem = {"name": key1, tests_config_key: ["dbt_utils.at_least_one"]}
                                 seq.append(elem)   
                                 
                             elif "valid_to" in key1 or "valid_from" in key1:
                                 
-                                elem = {"name": key1, "tests": ["dbt_utils.expression_is_true"":""expression"":"" valid_from < valid_to","not_null","unique"]}
+                                elem = {"name": key1, tests_config_key: ["dbt_utils.expression_is_true"":""expression"":"" valid_from < valid_to","not_null","unique"]}
                                 seq.append(elem)  
 
                             elif "pk" not in key1 or "fk" not in key1:
                         
-                                elem = {"name": key1, "tests": [""+"dbt_utils.at_least_one"]}
+                                elem = {"name": key1, tests_config_key: [""+"dbt_utils.at_least_one"]}
                                 seq.append(elem)
                     
                 elif key + "-" + key1 in ignore_test_keys_and_values and key not in ExploresVariables.test_ignore:
@@ -113,12 +125,12 @@ def get_all_values(nested_dictionary):
                     if key1 in described_columns_list:
 
                             
-                        elem = {"name": key1, "description": "{{doc("+'"'+key1+'"'+")}}", "tests": value1}
+                        elem = {"name": key1, "description": "{{doc("+'"'+key1+'"'+")}}", tests_config_key: value1}
                         seq.append(elem)
 
                     elif key1 not in described_columns_list:
 
-                        elem = {"name": key1, "tests": value1}
+                        elem = {"name": key1, tests_config_key: value1}
                         seq.append(elem)
             
             res.append([{"name": key, "columns": seq}])
